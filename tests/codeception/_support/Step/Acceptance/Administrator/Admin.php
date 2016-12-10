@@ -11,8 +11,11 @@ namespace Step\Acceptance\Administrator;
 
 use Codeception\Scenario;
 use Page\Acceptance\Administrator\AdminPage;
+use Page\Acceptance\Administrator\ArticleFieldPage;
+use Page\Acceptance\Administrator\ArticleFieldsPage;
 use Page\Acceptance\Administrator\ArticleManagerPage;
 use Page\Acceptance\Administrator\CategoryManagerPage;
+use Page\Acceptance\Administrator\FieldsArticleManagerPage;
 use Page\Acceptance\Administrator\MenuManagerPage;
 use Page\Acceptance\Administrator\UserAclPage;
 use Page\Acceptance\Administrator\UserGroupPage;
@@ -27,6 +30,7 @@ use Page\Acceptance\Administrator\UserManagerPage;
  */
 class Admin extends \AcceptanceTester
 {
+
 	/**
 	 * Admin Page Object for this class
 	 *
@@ -91,9 +95,27 @@ class Admin extends \AcceptanceTester
 	protected $menuManagerPage = null;
 
 	/**
+	 * Article Field Page Object for this class
+	 *
+	 * @var     null|ArticleFieldPage
+	 *
+	 * @since   __DEPLOY_VERSION__
+	 */
+	protected $articleFieldPage = null;
+
+	/**
+	 * Article Fields Page Object for this class
+	 *
+	 * @var     null|ArticleFieldPage
+	 *
+	 * @since   __DEPLOY_VERSION__
+	 */
+	protected $articleFieldsPage = null;
+
+	/**
 	 * User constructor.
 	 *
-	 * @param   Scenario  $scenario  Scenario object
+	 * @param   Scenario $scenario Scenario object
 	 *
 	 * @since   __DEPLOY_VERSION__
 	 */
@@ -109,14 +131,16 @@ class Admin extends \AcceptanceTester
 		$this->userGroupPage       = new UserGroupPage($scenario);
 		$this->userAclPage         = new UserAclPage($scenario);
 		$this->menuManagerPage     = new MenuManagerPage($scenario);
+		$this->articleFieldPage    = new ArticleFieldPage($scenario);
+		$this->articleFieldsPage   = new ArticleFieldsPage($scenario);
 	}
 
 	/**
 	 * Method to confirm message appear
 	 *
-	 * @param   string  $message  The message to be confirm
+	 * @param   string $message The message to be confirm
 	 *
-	 * @Then I should see the :message message
+	 * @Then    I should see the :message message
 	 *
 	 * @since   __DEPLOY_VERSION__
 	 *
